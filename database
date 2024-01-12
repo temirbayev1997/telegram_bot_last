@@ -1,0 +1,120 @@
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    login VARCHAR(255) UNIQUE,
+    password VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS products (
+    id INT PRIMARY KEY,
+    name VARCHAR(255),
+    price DECIMAL(10, 2),
+    category VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS monitors (
+    id int PRIMARY KEY,
+    price DECIMAL(10, 2),
+    name VARCHAR(255),	
+    response_time VARCHAR(255),
+    display DECIMAL(10, 2),
+    display_hz INT,
+    matrix VARCHAR(255),
+    resolution VARCHAR(255),
+    color_depth VARCHAR(255),
+    brightness INT
+);
+
+CREATE TABLE IF NOT EXISTS motherboards (
+    id int PRIMARY KEY,
+    price DECIMAL(10, 2),
+    name VARCHAR(255),
+    socket VARCHAR(255),
+    chipset VARCHAR(255),
+    max_ram INT,
+    type_ram VARCHAR(255),
+    form_factor VARCHAR(255),
+    max_ram_hz INT,
+    audio_chip VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS laptops (
+    id int PRIMARY KEY,
+    price DECIMAL(10, 2),
+    name VARCHAR(255),
+    brand VARCHAR(255),
+    processor_model VARCHAR(255),
+    ram INT,
+    ssd INT,
+    display DECIMAL(10, 2),
+    display_hz VARCHAR(255),
+    video_card VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS personal_computers (
+    id int PRIMARY KEY,
+    price DECIMAL(10, 2),
+    name VARCHAR(255),
+    ssd INT,
+    video_card VARCHAR(255),
+    processor VARCHAR(255),
+    ram INTEGER,
+    block_power INTEGER
+);
+
+
+CREATE TABLE IF NOT EXISTS user_data (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER,
+    cart TEXT[],
+    favorites TEXT[]
+);
+
+
+INSERT INTO products (id, name, price) VALUES
+  (1, 'MSI Optix G2412', 190),
+	(2, 'MSI Optix G24C4', 200),
+	(3, 'MSI Pro MP242V', 120),
+	(4, 'MSI PRO Z690-A WIFI', 190),
+	(5, 'MSI MPG Z490 GAMING PLUS', 150),
+	(6, 'MSI PRO B760-P WIFI DDR4', 170),
+	(7, 'MSI Modern 14 B11MOU', 440),
+	(8, 'MSI Thin GF63 12VE', 1070),
+	(9, 'MSI GF63 Thin 11UC', 880),
+	(10, 'MSI Infinite 11SI-1611XRU', 700),
+	(11, 'MSI PRO DP130 12-477XRU', 500),
+	(12, 'MSI trident 3 13TC-069RU', 1200);
+
+INSERT INTO monitors (id, name, price, response_time, display, display_hz, matrix, resolution, color_depth, brightness) VALUES
+    (1, 'MSI Optix G2412', 190, '1ms', 23.8, 170, 'IPS', '1920x1080', '8 bit', 250),
+    (2, 'MSI Optix G24C4', 200, '1ms', 24, 144, 'VA', '1920x1080', '8 bit', 250),
+    (3, 'MSI Pro MP242V', 120, '5ms', 23.8, 75, 'IPS', '1920x1080', '6 bit+FRC', 250);
+
+
+INSERT INTO motherboards (id, name, price, socket, chipset, max_ram, type_ram, form_factor, max_ram_hz, audio_chip) VALUES
+   (4, 'MSI PRO Z690-A WIFI', 190, 'Intel-LGA1700', 'Z690', 4, 'DDR5', 'ATX', 6400, 'Realtek ALC897'),
+   (5, 'MSI MPG Z490 GAMING PLUS', 150, 'Intel-LGA1200', 'Z490', 4, 'DDR4', 'ATX', 4800, 'Realtek ALC1200-VD1'),
+   (6, 'MSI PRO B760-P WIFI DDR4', 170, 'Intel-LGA1700', 'B760', 4, 'DDR4', 'ATX', 5333, 'Realtek ALC897');
+
+INSERT INTO Laptops (id, name, price, processor_model, ram, ssd, display, display_hz, video_card) VALUES
+  (7, 'MSI Modern 14 B11MOU', 440, 'I3-1115G4', 8, 256, 14, '60 hz', 'UHD Graphics Xe G4 48EUs'),
+	(8, 'MSI Thin GF63 12VE', 1070, 'I5-12450H', 8, 512, 15.6, '144 hz', 'RTX 4050'),
+	(9, 'MSI GF63 Thin 11UC', 880, 'I5-11400H', 8, 512, 15.6, '144 hz', 'RTX 3050');ьш
+	
+INSERT INTO personal_computers (id, name, price, processor, video_card, ssd, ram, block_power) VALUES
+    (10, 'MSI Infinite 11SI-1611XRU', 700, 'I5-11400F', 'GTX 1660 Super', 512, 16, 500),
+    (11, 'MSI PRO DP130 12-477XRU', 500, 'I5-12400', 'integrated', 256, 8, 350),
+    (12, 'MSI trident 3 13TC-069RU', 1200, 'I7-13700F', 'RTX 3060', 1024, 16, 330);
+
+
+SELECT * FROM products;
+SELECT * FROM monitors;
+SELECT * FROM motherboards;
+SELECT * FROM laptops;  
+SELECT * FROM personal_computers;
+select * from users
+
+DELETE FROM users;
+DELETE FROM products; 
+drop table if exists products;
+
+DROP TABLE IF EXISTS users, admin, products, user_data, monitors, motherboards, laptops, personal_computers 
